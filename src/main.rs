@@ -1,9 +1,9 @@
 use clap::{App, Arg};
 use std::process;
 
-use lib::*;
+use utils::*;
 
-mod lib;
+mod utils;
 
 fn main() {
     let matches = App::new("TODO List")
