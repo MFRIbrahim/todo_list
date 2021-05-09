@@ -1,6 +1,8 @@
 use clap::{App, Arg};
 use std::process;
 
+use lib::*;
+
 mod lib;
 
 fn main() {
@@ -22,7 +24,7 @@ additional argument for the item number of the item that is supposed to be remov
         )
         .get_matches();
 
-    let todo_list_lines = lib::load_todo_list().unwrap_or_else(|err| {
+    let todo_list_lines = load_todo_list().unwrap_or_else(|err| {
         eprintln!("Problem loading the todo list: {}", err);
         process::exit(1);
     });
@@ -35,7 +37,7 @@ additional argument for the item number of the item that is supposed to be remov
         }
     };
 
-    lib::run(config, input, todo_list_lines).unwrap_or_else(|err| {
+    run(config, input, todo_list_lines).unwrap_or_else(|err| {
         eprintln!("Problem updating the todo list: {}", err);
         process::exit(1);
     });
